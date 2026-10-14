@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+    overflow-x: hidden;
+  }
+}
+
+.font-bubble {
+  font-family: 'Fredoka', 'Bricolage Grotesque', cursive, sans-serif;
+}
+
+.font-editorial {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.font-mono-tag {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Halftone Pattern Generator */
+.bg-halftone-dots {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.12) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+
+.bg-halftone-blue {
+  background-image: radial-gradient(circle, rgba(37, 99, 235, 0.22) 2px, transparent 2px);
+  background-size: 10px 10px;
+}
+
+.bg-halftone-cmyk {
+  background-image: 
+    radial-gradient(circle, rgba(239, 68, 68, 0.2) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(59, 130, 246, 0.2) 1.5px, transparent 1.5px);
+  background-position: 0 0, 4px 4px;
+  background-size: 8px 8px;
+}
+
+/* Retro Checkerboard pattern */
+.bg-checkerboard-yellow-red {
+  background-image: 
+    linear-gradient(45deg, #facc15 25%, transparent 25%), 
+    linear-gradient(-45deg, #facc15 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #facc15 75%), 
+    linear-gradient(-45deg, transparent 75%, #facc15 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  background-color: #ef4444;
+}
+
+/* Comic Text Stroke Effects replicating "Bring that Acai" & "SWEET SUMMERTIME" */
+.text-stroke-thick {
+  -webkit-text-stroke: 4px #000;
+  text-shadow: 4px 5px 0px #000000;
+  paint-order: stroke fill;
+}
+
+.text-stroke-medium {
+  -webkit-text-stroke: 2.5px #000;
+  text-shadow: 2.5px 3px 0px rgba(0, 0, 0, 0.9);
+  paint-order: stroke fill;
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 2px #fff;
+  paint-order: stroke fill;
+}
+
+.shadow-pop {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.shadow-pop-lg {
+  box-shadow: 7px 7px 0px #000000;
+}
+
+.shadow-pop-red {
+  box-shadow: 4px 4px 0px #dc2626;
+}
+
+.shadow-pop-blue {
+  box-shadow: 4px 4px 0px #2563eb;
+}
+
+/* Marquee Ribbon */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 24s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Sticker Cutout Outline */
+.sticker-cutout {
+  filter: drop-shadow(3px 3px 0px #000) drop-shadow(-2px -2px 0px #fff) drop-shadow(2px -2px 0px #fff) drop-shadow(-2px 2px 0px #fff);
+}

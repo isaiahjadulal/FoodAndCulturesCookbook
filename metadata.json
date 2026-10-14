@@ -1,0 +1,6 @@
+{
+  "name": "Food & Cultures: My Cookbook Journey",
+  "description": "My Cookbook Journey by Isaiah Gardner for Food & Cultures class, featuring 3 Ingredient Banana Oatmeal Cookies, photo spotlight, lab highlights, concerns, and reflections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
