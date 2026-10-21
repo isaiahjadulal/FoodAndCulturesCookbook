@@ -2,6 +2,7 @@ import { BananaCookieRecipe } from '../types';
 import bananaCookieImg from '../assets/images/bananaoatmeal.jpg';
 
 export const BANANA_COOKIE_RECIPE: BananaCookieRecipe = {
+  id: 'banana-cookies',
   title: '3 Ingredient Banana Oatmeal Cookies',
   author: 'Isaiah Gardner',
   course: 'Food & Cultures Class Lab',

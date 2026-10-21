@@ -495,32 +495,33 @@ export const BananaCookiePage: React.FC<Props> = ({
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/92 backdrop-blur-md p-4 animate-in fade-in duration-200"
           onClick={() => setIsZoomModalOpen(false)}
         >
-          {/* Modal Header Controls */}
+          {/* Modal Header Controls - mobile responsive layout */}
           <div 
-            className="w-full max-w-4xl flex items-center justify-between gap-3 text-white mb-3 px-2 z-60"
+            className="w-full max-w-4xl flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 text-white mb-2 sm:mb-3 px-1 sm:px-2 z-60"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🔍</span>
-              <span className="font-bubble text-sm sm:text-base font-bold text-amber-300">
+            <div className="flex items-center gap-2 min-w-0 pr-2">
+              <span className="text-lg sm:text-xl flex-shrink-0">🔍</span>
+              <span className="font-bubble text-xs sm:text-base font-bold text-amber-300 truncate">
                 My Plated Dish • Zoom View
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 ml-auto flex-shrink-0">
               {/* Zoom Out */}
               <button
                 type="button"
                 onClick={() => setZoomLevel((z) => Math.max(1, +(z - 0.3).toFixed(1)))}
                 disabled={zoomLevel <= 1}
-                className="p-2 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-40 text-white rounded-xl border border-neutral-600 shadow-sm transition-transform active:scale-95 cursor-pointer"
+                className="p-2 sm:p-2.5 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 disabled:opacity-40 text-white rounded-xl border border-neutral-600 shadow-sm transition-transform active:scale-95 cursor-pointer min-h-[40px] min-w-[40px] flex items-center justify-center"
                 title="Zoom Out"
+                aria-label="Zoom out"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
 
               {/* Zoom Percentage */}
-              <span className="font-mono text-xs font-bold bg-neutral-900 border border-neutral-700 px-2.5 py-1.5 rounded-lg text-amber-300 min-w-[55px] text-center">
+              <span className="font-mono text-xs font-bold bg-neutral-900 border border-neutral-700 px-2 py-1.5 rounded-lg text-amber-300 min-w-[48px] text-center">
                 {Math.round(zoomLevel * 100)}%
               </span>
 
@@ -529,8 +530,9 @@ export const BananaCookiePage: React.FC<Props> = ({
                 type="button"
                 onClick={() => setZoomLevel((z) => Math.min(2.5, +(z + 0.3).toFixed(1)))}
                 disabled={zoomLevel >= 2.5}
-                className="p-2 bg-neutral-800 hover:bg-neutral-700 disabled:opacity-40 text-white rounded-xl border border-neutral-600 shadow-sm transition-transform active:scale-95 cursor-pointer"
+                className="p-2 sm:p-2.5 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 disabled:opacity-40 text-white rounded-xl border border-neutral-600 shadow-sm transition-transform active:scale-95 cursor-pointer min-h-[40px] min-w-[40px] flex items-center justify-center"
                 title="Zoom In"
+                aria-label="Zoom in"
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
@@ -539,8 +541,9 @@ export const BananaCookiePage: React.FC<Props> = ({
               <button
                 type="button"
                 onClick={() => setZoomLevel(1)}
-                className="p-2 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl border border-neutral-600 shadow-sm transition-transform active:scale-95 cursor-pointer"
+                className="hidden xs:flex p-2 sm:p-2.5 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white rounded-xl border border-neutral-600 shadow-sm transition-transform active:scale-95 cursor-pointer min-h-[40px] min-w-[40px] items-center justify-center"
                 title="Reset Zoom (100%)"
+                aria-label="Reset zoom"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -549,8 +552,9 @@ export const BananaCookiePage: React.FC<Props> = ({
               <button
                 type="button"
                 onClick={() => setIsZoomModalOpen(false)}
-                className="p-2 bg-amber-400 hover:bg-amber-300 text-black font-bold rounded-xl border-2 border-black shadow-pop ml-2 transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+                className="p-2 sm:p-2.5 bg-amber-400 hover:bg-amber-300 active:bg-amber-200 text-black font-bold rounded-xl border-2 border-black shadow-pop ml-1 transition-transform hover:scale-105 active:scale-95 cursor-pointer min-h-[40px] min-w-[40px] flex items-center justify-center"
                 title="Close (ESC)"
+                aria-label="Close zoom modal"
               >
                 <X className="w-5 h-5" />
               </button>
