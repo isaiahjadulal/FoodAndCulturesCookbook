@@ -8,24 +8,26 @@ import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { BananaCookiePage } from './components/BananaCookiePage';
 import { BruschettaPage } from './components/BruschettaPage';
+import { LemonCookiePage } from './components/LemonCookiePage';
 import { BANANA_COOKIE_RECIPE } from './data/bananaCookieRecipe';
 import { BRUSCHETTA_RECIPE } from './data/bruschettaRecipe';
+import { LEMON_COOKIE_RECIPE } from './data/lemonCookieRecipe';
 import { BananaCookieRecipe, CookbookEntryId } from './types';
 
 const STORAGE_KEY = 'isaiah_gardner_banana_cookie_plated_v9';
-const ENTRY_STORAGE_KEY = 'isaiah_gardner_active_entry_v1';
+const ENTRY_STORAGE_KEY = 'isaiah_gardner_active_entry_v2';
 
 export default function App() {
   const [currentEntry, setCurrentEntry] = useState<CookbookEntryId>(() => {
     try {
       const saved = localStorage.getItem(ENTRY_STORAGE_KEY);
-      if (saved === 'banana-cookies' || saved === 'garlic-bruschetta') {
+      if (saved === 'banana-cookies' || saved === 'garlic-bruschetta' || saved === 'lemon-cookies') {
         return saved;
       }
     } catch (e) {
       console.error(e);
     }
-    return 'garlic-bruschetta'; // Default to the newly added Garlic Bread Bruschetta
+    return 'lemon-cookies'; // Default to the newly added Lemon Cookies
   });
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -86,7 +88,9 @@ export default function App() {
 
         {/* Dynamic Recipe View */}
         <main className="flex-1 pb-16">
-          {currentEntry === 'garlic-bruschetta' ? (
+          {currentEntry === 'lemon-cookies' ? (
+            <LemonCookiePage recipe={LEMON_COOKIE_RECIPE} />
+          ) : currentEntry === 'garlic-bruschetta' ? (
             <BruschettaPage recipe={BRUSCHETTA_RECIPE} />
           ) : (
             <BananaCookiePage
@@ -103,7 +107,9 @@ export default function App() {
               <strong>Food & Cultures: My Cookbook Journey</strong> • Isaiah Gardner
             </span>
             <span className="text-neutral-500">
-              {currentEntry === 'garlic-bruschetta'
+              {currentEntry === 'lemon-cookies'
+                ? 'Entry #3: 3-Ingredient Lemon Cake Cookies • 6 Slideshow Photos • Oct 23, 2026'
+                : currentEntry === 'garlic-bruschetta'
                 ? 'Entry #2: Garlic Bread Bruschetta • 5 Slideshow Photos • Oct 16, 2026'
                 : 'Entry #1: 3 Ingredient Banana Oatmeal Cookies • Plated Dish • Oct 9, 2026'}
             </span>

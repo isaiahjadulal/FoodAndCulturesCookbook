@@ -1,4 +1,4 @@
-export type CookbookEntryId = 'banana-cookies' | 'garlic-bruschetta';
+export type CookbookEntryId = 'banana-cookies' | 'garlic-bruschetta' | 'lemon-cookies';
 
 export interface IngredientSticker {
   id: string;
@@ -106,6 +106,65 @@ export interface BruschettaRecipe {
     originReason: string;
     classifications: AppetizerClassification[];
     platingPlan: string;
+  };
+  markingScheme?: {
+    category: string;
+    points: string;
+  }[];
+}
+
+export interface LemonCookieRecipe {
+  id: 'lemon-cookies';
+  title: string;
+  author: string;
+  course: string;
+  date: string;
+  groupMembers: string[];
+  pageMembers?: {
+    recipe: string;
+    grocery: string;
+    tools: string;
+    terms: string;
+    research: string;
+  };
+  prepTime: string;
+  bakeTime: string;
+  ovenTemp: string;
+  slideshow: SlideImage[];
+  ingredientStickers: IngredientSticker[];
+  likes: {
+    title: string;
+    description: string;
+  }[];
+  dislikes: {
+    title: string;
+    description: string;
+  }[];
+  summary: string;
+  recipeVariationChosen: string;
+  ingredientsWithEggs: { name: string; amount: string; note?: string }[];
+  ingredientsWithoutEggs: { name: string; amount: string; note?: string }[];
+  lemonSauceIngredients: { name: string; amount: string; note?: string }[];
+  instructions: string[];
+  lemonSauceInstructions: string[];
+  groceryOrder: {
+    dairy: string[];
+    baking: string[];
+    bread: string[];
+    fruit: string[];
+    vegetables: string[];
+    other: string[];
+  };
+  collectedTools: CollectedTool[];
+  cookingTerms: CookingTerm[];
+  research: {
+    history: string;
+    delicateIngredient: string;
+    lemonVsLime: string;
+    whereLemonsGrow: string;
+    howCanadaGetsLemons: string;
+    fiveDishes: string[];
+    threeFunFacts: string[];
   };
   markingScheme?: {
     category: string;
