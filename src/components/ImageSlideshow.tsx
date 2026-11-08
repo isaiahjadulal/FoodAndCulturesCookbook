@@ -181,8 +181,18 @@ export const ImageSlideshow: React.FC<Props> = ({ slides, recipeTitle }) => {
 
       </div>
 
-      {/* Thumbnail Selector Strip (dynamically adapts for 4, 5, or 6 slides) */}
-      <div className={`grid ${slides.length >= 6 ? 'grid-cols-3 sm:grid-cols-6' : slides.length === 5 ? 'grid-cols-5' : 'grid-cols-4'} gap-1.5 sm:gap-2.5 pt-1`}>
+      {/* Thumbnail Selector Strip (dynamically adapts for 4, 5, 6, or 13+ slides) */}
+      <div
+        className={`grid ${
+          slides.length > 7
+            ? 'grid-cols-4 sm:grid-cols-7 lg:grid-cols-13'
+            : slides.length >= 6
+            ? 'grid-cols-3 sm:grid-cols-6'
+            : slides.length === 5
+            ? 'grid-cols-5'
+            : 'grid-cols-4'
+        } gap-1.5 sm:gap-2 pt-1`}
+      >
         {slides.map((slide, idx) => {
           const isActive = idx === currentIndex;
           return (

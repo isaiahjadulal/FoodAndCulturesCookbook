@@ -1,4 +1,8 @@
-export type CookbookEntryId = 'banana-cookies' | 'garlic-bruschetta' | 'lemon-cookies';
+export type CookbookEntryId =
+  | 'banana-cookies'
+  | 'garlic-bruschetta'
+  | 'lemon-cookies'
+  | 'chinese-fried-rice';
 
 export interface IngredientSticker {
   id: string;
@@ -171,3 +175,56 @@ export interface LemonCookieRecipe {
     points: string;
   }[];
 }
+
+export interface FriedRiceRecipe {
+  id: 'chinese-fried-rice';
+  title: string;
+  author: string;
+  course: string;
+  date: string;
+  groupMembers: string[];
+  pageMembers?: {
+    recipe: string;
+    grocery: string;
+    tools: string;
+    terms: string;
+    research: string;
+  };
+  prepTime: string;
+  cookTime: string;
+  slideshow: SlideImage[];
+  ingredientStickers: IngredientSticker[];
+  likes: {
+    title: string;
+    description: string;
+  }[];
+  dislikes: {
+    title: string;
+    description: string;
+  }[];
+  summary: string;
+  riceIngredients: { name: string; amount: string; note?: string }[];
+  stirFryIngredients: { name: string; amount: string; note?: string }[];
+  riceInstructions: string[];
+  stirFryInstructions: string[];
+  platingInstructions: string[];
+  groceryOrder: {
+    refrigerated: string[];
+    produce: string[];
+    frozen: string[];
+    grains: string[];
+    condiments: string[];
+    fruitGarnish: string[];
+  };
+  collectedTools: CollectedTool[];
+  cookingTerms: CookingTerm[];
+  research: {
+    history: string;
+    scienceOfRice: string;
+    tofuSearingScience: string;
+    wokHeiExplanation: string;
+    fiveDishes: string[];
+    threeFunFacts: string[];
+  };
+}
+

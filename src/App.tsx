@@ -9,25 +9,32 @@ import { Sidebar } from './components/Sidebar';
 import { BananaCookiePage } from './components/BananaCookiePage';
 import { BruschettaPage } from './components/BruschettaPage';
 import { LemonCookiePage } from './components/LemonCookiePage';
+import { FriedRicePage } from './components/FriedRicePage';
 import { BANANA_COOKIE_RECIPE } from './data/bananaCookieRecipe';
 import { BRUSCHETTA_RECIPE } from './data/bruschettaRecipe';
 import { LEMON_COOKIE_RECIPE } from './data/lemonCookieRecipe';
+import { FRIED_RICE_RECIPE } from './data/friedRiceRecipe';
 import { BananaCookieRecipe, CookbookEntryId } from './types';
 
 const STORAGE_KEY = 'isaiah_gardner_banana_cookie_plated_v9';
-const ENTRY_STORAGE_KEY = 'isaiah_gardner_active_entry_v2';
+const ENTRY_STORAGE_KEY = 'isaiah_gardner_active_entry_v3';
 
 export default function App() {
   const [currentEntry, setCurrentEntry] = useState<CookbookEntryId>(() => {
     try {
       const saved = localStorage.getItem(ENTRY_STORAGE_KEY);
-      if (saved === 'banana-cookies' || saved === 'garlic-bruschetta' || saved === 'lemon-cookies') {
+      if (
+        saved === 'banana-cookies' ||
+        saved === 'garlic-bruschetta' ||
+        saved === 'lemon-cookies' ||
+        saved === 'chinese-fried-rice'
+      ) {
         return saved;
       }
     } catch (e) {
       console.error(e);
     }
-    return 'lemon-cookies'; // Default to the newly added Lemon Cookies
+    return 'chinese-fried-rice'; // Default to the newly added Chinese Fried Rice
   });
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -88,7 +95,9 @@ export default function App() {
 
         {/* Dynamic Recipe View */}
         <main className="flex-1 pb-16">
-          {currentEntry === 'lemon-cookies' ? (
+          {currentEntry === 'chinese-fried-rice' ? (
+            <FriedRicePage recipe={FRIED_RICE_RECIPE} />
+          ) : currentEntry === 'lemon-cookies' ? (
             <LemonCookiePage recipe={LEMON_COOKIE_RECIPE} />
           ) : currentEntry === 'garlic-bruschetta' ? (
             <BruschettaPage recipe={BRUSCHETTA_RECIPE} />
@@ -107,7 +116,9 @@ export default function App() {
               <strong>Food & Cultures: My Cookbook Journey</strong> • Isaiah Gardner
             </span>
             <span className="text-neutral-500">
-              {currentEntry === 'lemon-cookies'
+              {currentEntry === 'chinese-fried-rice'
+                ? 'Entry #4: Chinese Fried Rice with Crispy Tofu • 13 Slideshow Photos • Nov 6, 2026'
+                : currentEntry === 'lemon-cookies'
                 ? 'Entry #3: 3-Ingredient Lemon Cake Cookies • 6 Slideshow Photos • Oct 23, 2026'
                 : currentEntry === 'garlic-bruschetta'
                 ? 'Entry #2: Garlic Bread Bruschetta • 5 Slideshow Photos • Oct 16, 2026'
