@@ -10,14 +10,16 @@ import { BananaCookiePage } from './components/BananaCookiePage';
 import { BruschettaPage } from './components/BruschettaPage';
 import { LemonCookiePage } from './components/LemonCookiePage';
 import { FriedRicePage } from './components/FriedRicePage';
+import { CrepePage } from './components/CrepePage';
 import { BANANA_COOKIE_RECIPE } from './data/bananaCookieRecipe';
 import { BRUSCHETTA_RECIPE } from './data/bruschettaRecipe';
 import { LEMON_COOKIE_RECIPE } from './data/lemonCookieRecipe';
 import { FRIED_RICE_RECIPE } from './data/friedRiceRecipe';
+import { CREPE_RECIPE } from './data/crepeRecipe';
 import { BananaCookieRecipe, CookbookEntryId } from './types';
 
 const STORAGE_KEY = 'isaiah_gardner_banana_cookie_plated_v9';
-const ENTRY_STORAGE_KEY = 'isaiah_gardner_active_entry_v3';
+const ENTRY_STORAGE_KEY = 'isaiah_gardner_active_entry_v4';
 
 export default function App() {
   const [currentEntry, setCurrentEntry] = useState<CookbookEntryId>(() => {
@@ -27,14 +29,15 @@ export default function App() {
         saved === 'banana-cookies' ||
         saved === 'garlic-bruschetta' ||
         saved === 'lemon-cookies' ||
-        saved === 'chinese-fried-rice'
+        saved === 'chinese-fried-rice' ||
+        saved === 'crepes'
       ) {
         return saved;
       }
     } catch (e) {
       console.error(e);
     }
-    return 'chinese-fried-rice'; // Default to the newly added Chinese Fried Rice
+    return 'crepes'; // Default to the newly added Crepes entry
   });
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -95,7 +98,9 @@ export default function App() {
 
         {/* Dynamic Recipe View */}
         <main className="flex-1 pb-16">
-          {currentEntry === 'chinese-fried-rice' ? (
+          {currentEntry === 'crepes' ? (
+            <CrepePage recipe={CREPE_RECIPE} />
+          ) : currentEntry === 'chinese-fried-rice' ? (
             <FriedRicePage recipe={FRIED_RICE_RECIPE} />
           ) : currentEntry === 'lemon-cookies' ? (
             <LemonCookiePage recipe={LEMON_COOKIE_RECIPE} />
@@ -116,7 +121,9 @@ export default function App() {
               <strong>Food & Cultures: My Cookbook Journey</strong> • Isaiah Gardner
             </span>
             <span className="text-neutral-500">
-              {currentEntry === 'chinese-fried-rice'
+              {currentEntry === 'crepes'
+                ? 'Entry #5: Berry, Banana & Cream Crepes • 8 Slideshow Photos • Nov 12, 2026'
+                : currentEntry === 'chinese-fried-rice'
                 ? 'Entry #4: Chinese Fried Rice with Crispy Tofu • 13 Slideshow Photos • Nov 6, 2026'
                 : currentEntry === 'lemon-cookies'
                 ? 'Entry #3: 3-Ingredient Lemon Cake Cookies • 6 Slideshow Photos • Oct 23, 2026'

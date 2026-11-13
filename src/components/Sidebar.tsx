@@ -50,6 +50,14 @@ const ENTRIES: EntryMeta[] = [
     course: 'Food & Cultures',
     tag: 'Lab #4',
   },
+  {
+    id: 'crepes',
+    title: 'Berry, Banana & Cream Crepes',
+    emoji: '🍓',
+    date: 'Nov 12, 2026',
+    course: 'Food & Cultures',
+    tag: 'Lab #5',
+  },
 ];
 
 interface Props {
@@ -92,7 +100,7 @@ export const Sidebar: React.FC<Props> = ({
                 My Cookbook
               </h2>
               <span className="text-[10px] font-mono text-neutral-500">
-                Isaiah Gardner • 4 Entries
+                Isaiah Gardner • 5 Entries
               </span>
             </div>
           </div>

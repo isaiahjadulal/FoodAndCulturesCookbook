@@ -2,7 +2,8 @@ export type CookbookEntryId =
   | 'banana-cookies'
   | 'garlic-bruschetta'
   | 'lemon-cookies'
-  | 'chinese-fried-rice';
+  | 'chinese-fried-rice'
+  | 'crepes';
 
 export interface IngredientSticker {
   id: string;
@@ -226,5 +227,29 @@ export interface FriedRiceRecipe {
     fiveDishes: string[];
     threeFunFacts: string[];
   };
+}
+
+export interface CrepeRecipe {
+  id: 'crepes';
+  title: string;
+  author: string;
+  course: string;
+  date: string;
+  slideshow: SlideImage[];
+  ingredientStickers: IngredientSticker[];
+  ingredients: {
+    name: string;
+    category: 'Batter' | 'Filling & Topping';
+    emoji: string;
+  }[];
+  likes: {
+    title: string;
+    description: string;
+  }[];
+  dislikes: {
+    title: string;
+    description: string;
+  }[];
+  summary: string;
 }
 

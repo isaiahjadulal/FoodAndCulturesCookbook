@@ -43,7 +43,9 @@ export const Header: React.FC<Props> = ({
                 ? '🥖'
                 : currentEntry === 'lemon-cookies'
                 ? '🍋'
-                : '🍚'}
+                : currentEntry === 'chinese-fried-rice'
+                ? '🍚'
+                : '🍓'}
             </div>
             <div className="min-w-0">
               <h1 className="font-bubble text-xs sm:text-base md:text-lg font-black tracking-tight text-neutral-900 truncate">
@@ -104,6 +106,18 @@ export const Header: React.FC<Props> = ({
           >
             <span>🍚</span>
             <span className="hidden sm:inline">Fried Rice</span>
+          </button>
+
+          <button
+            onClick={() => onSelectEntry('crepes')}
+            className={`px-2 sm:px-2.5 py-1 rounded-lg font-bubble text-[11px] sm:text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+              currentEntry === 'crepes'
+                ? 'bg-rose-400 text-black shadow-xs font-extrabold'
+                : 'text-neutral-600 hover:text-black'
+            }`}
+          >
+            <span>🍓</span>
+            <span className="hidden sm:inline">Crepes</span>
           </button>
         </div>
 

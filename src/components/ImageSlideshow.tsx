@@ -181,10 +181,12 @@ export const ImageSlideshow: React.FC<Props> = ({ slides, recipeTitle }) => {
 
       </div>
 
-      {/* Thumbnail Selector Strip (dynamically adapts for 4, 5, 6, or 13+ slides) */}
+      {/* Thumbnail Selector Strip (dynamically adapts for 4, 5, 6, 8, or 13+ slides) */}
       <div
         className={`grid ${
-          slides.length > 7
+          slides.length === 8
+            ? 'grid-cols-4 sm:grid-cols-8'
+            : slides.length > 7
             ? 'grid-cols-4 sm:grid-cols-7 lg:grid-cols-13'
             : slides.length >= 6
             ? 'grid-cols-3 sm:grid-cols-6'
